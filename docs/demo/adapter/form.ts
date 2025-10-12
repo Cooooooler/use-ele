@@ -16,13 +16,13 @@ async function initSetupForm() {
     defineRules: {
       required: (value, _params, ctx) => {
         if (value === undefined || value === null || value.length === 0) {
-          return '请输入';
+          return `请输入${ctx.label}`;
         }
         return true;
       },
       selectRequired: (value, _params, ctx) => {
-        if (value === undefined || value === null) {
-          return '请输入';
+        if (value === undefined || value === null || value.length === 0) {
+          return `请选择${ctx.label}`;
         }
         return true;
       },

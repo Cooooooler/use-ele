@@ -386,7 +386,10 @@ onUnmounted(() => {
           </FormDescription>
         </div>
 
-        <Transition name="slide-up" v-if="!compact">
+        <Transition
+          enter-active-class="animate-fade-in-down"
+          leave-active-class="animate-fade-out-up"
+        >
           <FormMessage class="absolute" />
         </Transition>
       </div>

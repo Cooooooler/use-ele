@@ -1,1 +1,33 @@
 @import 'tailwindcss';
+@import 'tailwindcss-animated';
+
+/* 自定义动画：fade-in-down (主要用于FormMessage) */
+@keyframes fade-in-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 自定义动画：fade-out-up (主要用于FormMessage) */
+@keyframes fade-out-up {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+@theme inline {
+  --animate-fade-in-down: fade-in-down 300ms ease-out;
+  --animate-fade-out-up: fade-out-up 300ms ease-in;
+}

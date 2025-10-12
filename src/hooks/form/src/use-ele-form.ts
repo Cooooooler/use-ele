@@ -1,13 +1,20 @@
 import type { BaseFormComponentType, FormProps } from './types';
 
-import { defineComponent, h, isReactive, onBeforeUnmount, watch } from 'vue';
+import {
+  defineComponent,
+  h,
+  isReactive,
+  onBeforeUnmount,
+  Ref,
+  watch,
+} from 'vue';
 
 import { FormApi } from './form-api';
 import UseEleFormCom from './use-ele-form-com.vue';
 
 export function useForm<
   T extends BaseFormComponentType = BaseFormComponentType,
->(options: FormProps<T>) {
+>(options: FormProps<T> | Ref<FormProps<T>>['value']) {
   const IS_REACTIVE = isReactive(options);
   const api = new FormApi(options);
   const extendedApi = api;

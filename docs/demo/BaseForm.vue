@@ -4,10 +4,12 @@
 
 <script setup lang="ts">
 import { useEleForm } from './adapter';
-import { h } from 'vue';
+import { h, ref } from 'vue';
 import { ElCheckbox, ElMessage } from 'element-plus';
+import type { ComponentType } from './adapter/component';
+import { FormProps } from 'use-ele';
 
-const [MyForm, formApi] = useEleForm({
+const formSchema = ref<FormProps<ComponentType>>({
   commonConfig: {
     componentProps: {
       class: 'w-full',
@@ -82,7 +84,8 @@ const [MyForm, formApi] = useEleForm({
     {
       component: 'CheckboxGroup',
       fieldName: 'checkButton',
-      label: '复选框按钮组',
+      label: '复选框按钮',
+      rules: 'selectRequired',
       componentProps: {
         isButton: true,
         options: [
@@ -112,6 +115,7 @@ const [MyForm, formApi] = useEleForm({
     },
   ],
 });
+const [MyForm, formApi] = useEleForm(formSchema.value);
 
 function setFormValues() {
   formApi.setValues({
@@ -128,6 +132,12 @@ function setFormValues() {
 }
 
 setFormValues();
+formSchema.value.schema.push({
+  component: 'Input',
+  fieldName: 'string1',
+  label: '输入框1',
+  rules: 'required',
+});
 </script>
 
 <style lang="less" scoped></style>
