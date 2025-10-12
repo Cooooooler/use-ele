@@ -1,1 +1,1 @@
-export * from './Bar';
+export { initComponentAdapter, initSetupForm, useEleForm } from './adapter';

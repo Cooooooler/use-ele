@@ -1,1 +1,3 @@
-This is a guide example.
+---
+group: 快速开始
+---

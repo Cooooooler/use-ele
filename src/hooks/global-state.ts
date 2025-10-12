@@ -38,6 +38,7 @@ class GlobalShareState {
   }
 
   public setComponents(value: ComponentsState) {
+    console.log('🚀 ~ setComponents ~ value: ', value);
     this.#components = value;
   }
 }

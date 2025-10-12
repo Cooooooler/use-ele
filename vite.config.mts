@@ -1,19 +1,15 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'node:path';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-
+import { resolve } from 'node:path';
+import { defineConfig } from 'vite';
 
 const externals = ['vue'];
 
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-  ],
+  plugins: [vue(), vueJsx()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: resolve(__dirname, 'src/BaseForm.vue'),
       name: 'index',
       fileName: 'index',
     },
@@ -21,13 +17,16 @@ export default defineConfig({
       external: [...externals],
       output: {
         globals: {
-          'vue': 'Vue',
+          vue: 'Vue',
         },
       },
     },
     outDir: 'dist',
   },
   resolve: {
+    alias: {
+      'use-ele': resolve(__dirname, 'src/index.ts'),
+    },
     dedupe: ['vue'],
   },
   optimizeDeps: {

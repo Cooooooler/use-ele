@@ -1,4 +1,4 @@
-export { cloneDeep, get, isEqual, set } from 'lodash';
+export { cloneDeep, get, isEqual, set } from 'lodash-es';
 export * from './cn';
 export * from './date';
 export * from './diff';

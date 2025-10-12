@@ -62,12 +62,14 @@ const compact = computed(() => formRenderProps.compact);
 const isInValid = computed(() => errors.value?.length > 0);
 
 const FieldComponent = computed(() => {
+  console.log('🚀 ~  ~ component: ', component);
+  console.log('🚀 ~  ~ componentMap.value: ', componentMap.value);
   const finalComponent = isString(component)
     ? componentMap.value[component]
     : component;
   if (!finalComponent) {
     // 组件未注册
-    console.warn(`Component ${component} is not registered`);
+    console.error(`Component ${component} is not registered`);
   }
   return finalComponent;
 });
