@@ -1,5 +1,5 @@
 <template>
-  <Form />
+  <MyForm />
 </template>
 
 <script setup lang="ts">
@@ -7,24 +7,19 @@ import { useEleForm } from './adapter';
 import { h } from 'vue';
 import { ElCheckbox, ElMessage } from 'element-plus';
 
-const [Form, formApi] = useEleForm({
+const [MyForm, formApi] = useEleForm({
   commonConfig: {
     componentProps: {
       class: 'w-full',
     },
   },
   layout: 'horizontal',
-  wrapperClass: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4',
+  wrapperClass: 'grid grid-cols-1 w-[600px]',
   handleSubmit: (values: Record<string, any>) => {
     console.log('🚀 ~ handleSubmit ~ values: ', values);
     ElMessage.success(`表单数据：${JSON.stringify(values)}`);
   },
   schema: [
-    {
-      component: 'IconPicker',
-      fieldName: 'icon',
-      label: '图标选择',
-    },
     {
       component: 'Input',
       fieldName: 'string',

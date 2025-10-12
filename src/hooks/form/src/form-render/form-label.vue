@@ -18,7 +18,7 @@ const props = defineProps<Props>();
 
 <template>
   <FormLabel :class="cn('flex items-center', props.class)">
-    <span v-if="required" class="text-destructive mr-[2px]">*</span>
+    <span v-if="required" class="text-red-700 mr-[2px]">*</span>
     <slot></slot>
     <HelpTooltip v-if="help" trigger-class="size-3.5 ml-1">
       <RenderContent :content="help" />

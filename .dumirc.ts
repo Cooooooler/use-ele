@@ -4,7 +4,6 @@ import { resolve } from 'node:path';
 export default defineConfig({
   apiParser: {},
   resolve: {
-    // 将入口文件改为库入口，避免指向不存在的 src/BaseForm.vue
     entryFile: 'src/index.ts',
   },
   // 将包名映射到本地源码，供 dumi 站点解析
@@ -15,5 +14,7 @@ export default defineConfig({
   themeConfig: {
     name: 'use-ele',
   },
+  // 在 dumi(Umi 4) 构建里通过 PostCSS 处理 Tailwind v4
+  extraPostCSSPlugins: [require('@tailwindcss/postcss')],
   presets: [require.resolve('@dumijs/preset-vue')],
 });

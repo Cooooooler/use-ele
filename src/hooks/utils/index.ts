@@ -7,7 +7,6 @@ export * from './download';
 export * from './inference';
 export * from './letter';
 export * from './merge';
-export * from './nprogress';
 export * from './resources';
 export * from './state-handler';
 export * from './tree';

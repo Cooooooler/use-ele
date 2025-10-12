@@ -49,7 +49,6 @@ export function setupForm<
     | undefined;
 
   const components = globalShareState.getComponents();
-  console.log('🚀 ~ setupForm ~ components: ', components);
 
   for (const component of Object.keys(components)) {
     const key = component as BaseFormComponentType;

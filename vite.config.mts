@@ -1,3 +1,4 @@
+import tailwindcss from '@tailwindcss/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { resolve } from 'node:path';
@@ -6,7 +7,7 @@ import { defineConfig } from 'vite';
 const externals = ['vue'];
 
 export default defineConfig({
-  plugins: [vue(), vueJsx()],
+  plugins: [vue(), vueJsx(), tailwindcss()],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
