@@ -13,9 +13,9 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "use-ele": ["src", "docs/*"],
-      "use-ele/*": ["src/*", "*"]
+      "use-ele": ["src"],
+      "use-ele/*": ["src/*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*"]
+  "include": [".dumirc.ts", "src/**/*", "docs/**/*"]
 }

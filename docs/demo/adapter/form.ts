@@ -1,7 +1,5 @@
-import * as z from 'zod';
-import { setupForm } from '../hooks/form/src/config';
-import type { FormProps, FormSchema } from '../hooks/form/src/types';
-import { useForm } from '../hooks/form/src/use-ele-form';
+import type { FormProps, FormSchema } from 'use-ele';
+import { setupForm, useForm } from 'use-ele';
 import type { ComponentType } from './component';
 import { initComponentAdapter } from './component';
 
@@ -32,7 +30,7 @@ async function initSetupForm() {
 
 const useEleForm = useForm<ComponentType>;
 
-export { initComponentAdapter, initSetupForm, useEleForm, z };
+export { initComponentAdapter, initSetupForm, useEleForm };
 
 export type EleFormSchema = FormSchema<ComponentType>;
 export type { FormProps };

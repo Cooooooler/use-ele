@@ -1,6 +1,7 @@
 import type { ComputedRef, Ref } from 'vue';
 import { computed, getCurrentInstance, unref, useAttrs, useSlots } from 'vue';
 
+import { NoInfer } from '@tanstack/vue-store';
 import { getFirstNonNullOrUndefined, kebabToCamelCase } from '../utils';
 
 /**

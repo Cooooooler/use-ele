@@ -5,6 +5,7 @@ import type { Component, HtmlHTMLAttributes, Ref } from 'vue';
 
 import type { ClassType, MaybeComputedRef } from '../../typings';
 
+import { NoInfer } from '@tanstack/vue-store';
 import type { FormApi } from './form-api';
 
 export type FormLayout = 'horizontal' | 'inline' | 'vertical';

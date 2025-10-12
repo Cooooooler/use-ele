@@ -1,1 +1,1 @@
-export { initComponentAdapter, initSetupForm, useEleForm } from './adapter';
+export * from './hooks';

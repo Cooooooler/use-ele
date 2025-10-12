@@ -3,17 +3,12 @@
  */
 
 import type { Component } from 'vue';
-
 import { defineComponent, h, ref } from 'vue';
 
 // TODO:Api组件
 // import { ApiComponent  } from '../../packages/effects/common-ui/src';
-
 import { ElInput, ElNotification } from 'element-plus';
-import { BaseFormComponentType } from '../../hooks/form/src/types';
-import { globalShareState } from '../../hooks/global-state';
-import { Recordable } from '../../hooks/typings';
-
+import { globalShareState, Recordable } from 'use-ele';
 // const ElButton = defineAsyncComponent(() =>
 //   Promise.all([
 //     import('element-plus/es/components/button/index'),
@@ -166,8 +161,7 @@ export type ComponentType =
   | 'Switch'
   | 'TimePicker'
   | 'TreeSelect'
-  | 'Upload'
-  | BaseFormComponentType;
+  | 'Upload';
 
 async function initComponentAdapter() {
   const components: Partial<Record<ComponentType, Component>> = {

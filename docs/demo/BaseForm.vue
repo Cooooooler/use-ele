@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { initComponentAdapter, initSetupForm, useEleForm } from 'use-ele';
+import { initComponentAdapter, initSetupForm, useEleForm } from './adapter';
 import { onMounted, ref } from 'vue';
 
 const emit = defineEmits<{
