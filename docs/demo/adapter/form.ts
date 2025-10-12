@@ -2,6 +2,8 @@ import type { FormProps, FormSchema } from 'use-ele';
 import { setupForm, useForm } from 'use-ele';
 import type { ComponentType } from './component';
 import { initComponentAdapter } from './component';
+// 请确保在main.ts中引入element-plus样式文件，这是element-plus文档要求的
+import 'element-plus/dist/index.css';
 
 async function initSetupForm() {
   setupForm<ComponentType>({

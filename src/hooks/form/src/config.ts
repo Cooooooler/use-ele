@@ -1,5 +1,4 @@
 import type { Component } from 'vue';
-import { h } from 'vue';
 
 import type {
   BaseFormComponentType,
@@ -7,10 +6,8 @@ import type {
   FormCommonConfig,
 } from './types';
 
-import { globalShareState } from '../../global-state';
-
-import { ElButton } from 'element-plus';
 import { defineRule } from 'vee-validate';
+import { globalShareState } from '../../global-state';
 
 const DEFAULT_MODEL_PROP_NAME = 'modelValue';
 
@@ -18,10 +15,7 @@ export const COMPONENT_BIND_EVENT_MAP: Partial<
   Record<BaseFormComponentType, string>
 > = {};
 
-export const COMPONENT_MAP: Record<BaseFormComponentType, Component> = {
-  DefaultButton: h(ElButton, { type: 'default', size: 'small' }),
-  PrimaryButton: h(ElButton, { type: 'primary', size: 'small' }),
-};
+export const COMPONENT_MAP: Record<BaseFormComponentType, Component> = {};
 
 export const DEFAULT_FORM_COMMON_CONFIG: FormCommonConfig = {};
 
