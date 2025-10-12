@@ -1,51 +1,37 @@
 <template>
-  <span
-    @click="handleClick"
-  >
-    <template v-if="icon">
-      {{ icon }}
-    </template>
-    <slot
-      v-else
-      name="icon"
-    />
-    <slot />
-  </span>
+  <Form />
 </template>
 
 <script setup lang="ts">
-import { VNodeChild } from 'vue';
-
-defineProps<{
-  /**
-   * 图标字符
-   */
-  icon?: string;
-}>();
-
-defineSlots<{
-  /**
-   * 图标插槽
-   * @alpha
-   */
-  icon?: VNodeChild;
-  default: VNodeChild,
-}>();
+import { useEleForm } from '../adapter';
 
 const emit = defineEmits<{
-  (e: 'click', event: MouseEvent): void
+  (e: 'click', event: MouseEvent): void;
 }>();
 
 function handleClick(e: MouseEvent) {
   emit('click', e);
 }
 
+const [Form, formApi] = useEleForm({
+  commonConfig: {
+    componentProps: {
+      class: 'w-full',
+    },
+  },
+  layout: 'horizontal',
+  wrapperClass: 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4',
+  handleSubmit: (values: Record<string, any>) => {
+    console.log('submit', values);
+  },
+  schema: [
+    {
+      component: 'Input',
+      fieldName: 'string',
+      label: '输入框',
+    },
+  ],
+});
 </script>
 
-<style lang="less" scoped>
-span {
-  border: 1px solid red;
-  border-radius: 4px;
-  padding: 4px;
-}
-</style>
+<style lang="less" scoped></style>

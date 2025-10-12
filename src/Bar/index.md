@@ -6,34 +6,11 @@ This is an example component of Vue SFC.
 <script setup>
 import { ref } from 'vue';
 import { Bar } from 'use-ele';
-
-const color = ref('red');
 </script>
 
 <template>
-  <p class="greeting">
-    <Bar icon="🤙">Hello Vue!</Bar>
-  </p>
+  <Bar>Hello Vue!</Bar>
 </template>
 
-<style>
-.greeting {
-  color: v-bind('color');
-  font-size: 16px;
-  font-weight: bold;
-}
-</style>
+<style></style>
 ```
-## Bar API
-
-### Props
-
-<API id="Bar" type="props"></API>
-
-### Slots
-
-<API id="Bar" type="slots"></API>
-
-### Events
-
-<API id="Bar" type="events"></API>
