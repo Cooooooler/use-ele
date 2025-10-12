@@ -13,7 +13,7 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
-      "use-ele": ["src"],
+      "use-ele": ["src", "docs/*"],
       "use-ele/*": ["src/*", "*"]
     }
   },
