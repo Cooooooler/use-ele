@@ -12,7 +12,7 @@ import type { Recordable } from '../../utils/types';
 
 import type { FormActions, FormProps, FormSchema } from './types';
 
-import { Store } from '@tanstack/vue-store';
+import { NoInfer, Store, useStore } from '@tanstack/vue-store';
 import {
   bindMethods,
   createMerge,
@@ -167,45 +167,46 @@ export class FormApi {
     return form.isFieldValid(fieldName);
   }
 
-  merge(formApi: FormApi) {
-    const chain = [this, formApi];
-    const proxy = new Proxy(formApi, {
-      get(target: any, prop: any) {
-        if (prop === 'merge') {
-          return (nextFormApi: FormApi) => {
-            chain.push(nextFormApi);
-            return proxy;
-          };
-        }
-        if (prop === 'submitAllForm') {
-          return async (needMerge: boolean = true) => {
-            try {
-              const results = await Promise.all(
-                chain.map(async (api) => {
-                  const validateResult = await api.validate();
-                  if (!validateResult.valid) {
-                    return;
-                  }
-                  const rawValues = toRaw((await api.getValues()) || {});
-                  return rawValues;
-                }),
-              );
-              if (needMerge) {
-                const mergedResults = Object.assign({}, ...results);
-                return mergedResults;
-              }
-              return results;
-            } catch (error) {
-              console.error('Validation error:', error);
-            }
-          };
-        }
-        return target[prop];
-      },
-    });
-
-    return proxy;
-  }
+  // TODO: 待完善merge方法
+  // merge(formApi: FormApi) {
+  //   const chain = [this, formApi];
+  //   const proxy = new Proxy(formApi, {
+  //     get(target: any, prop: any) {
+  //       if (prop === 'merge') {
+  //         return (nextFormApi: FormApi) => {
+  //           chain.push(nextFormApi);
+  //           return proxy;
+  //         };
+  //       }
+  //       if (prop === 'submitAllForm') {
+  //         return async (needMerge: boolean = true) => {
+  //           try {
+  //             const results = await Promise.all(
+  //               chain.map(async (api) => {
+  //                 const validateResult = await api.validate();
+  //                 if (!validateResult.valid) {
+  //                   return;
+  //                 }
+  //                 const rawValues = toRaw((await api.getValues()) || {});
+  //                 return rawValues;
+  //               }),
+  //             );
+  //             if (needMerge) {
+  //               const mergedResults = Object.assign({}, ...results);
+  //               return mergedResults;
+  //             }
+  //             return results;
+  //           } catch (error) {
+  //             console.error('Validation error:', error);
+  //           }
+  //         };
+  //       }
+  //       return target[prop];
+  //     },
+  //   });
+  //
+  //   return proxy;
+  // }
 
   mount(formActions: FormActions, componentRefMap: Map<string, unknown>) {
     if (!this.isMounted) {
@@ -589,5 +590,10 @@ export class FormApi {
         this.form?.setFieldValue?.(schema.fieldName, undefined);
       }
     }
+  }
+  public useStore<T = NoInfer<FormProps>>(
+    selector?: (state: NoInfer<FormProps>) => T,
+  ) {
+    return useStore(this.store, selector);
   }
 }

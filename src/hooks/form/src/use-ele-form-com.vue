@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Recordable } from '../../utils/types';
 
-import type { ExtendedFormApi, FormProps } from './types';
+import type { FormProps } from './types';
 
 import { nextTick, onMounted, watch } from 'vue';
 
@@ -22,10 +22,11 @@ import {
   provideFormProps,
   useFormInitial,
 } from './use-form-context';
+import { FormApi } from '../../../hooks/form/src/form-api';
 
 // 通过 extends 会导致热更新卡死，所以重复写了一遍
 interface Props extends FormProps {
-  formApi: ExtendedFormApi;
+  formApi: FormApi;
 }
 
 const props = defineProps<Props>();

@@ -51,7 +51,6 @@ const wrapperClass = computed(() => {
 });
 
 provideFormRenderProps(props);
-console.log('🚀 ~  ~ props: ', props);
 
 const { isCalculated, keepFormItemIndex, wrapperRef } = useExpandable(props);
 

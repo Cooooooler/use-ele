@@ -10,15 +10,16 @@ import {
 import type { ComputedRef } from 'vue';
 import { computed, unref, useSlots } from 'vue';
 
-import type { ExtendedFormApi, FormActions, FormProps } from './types';
+import type { FormActions, FormProps } from './types';
 
 import { isString, mergeWithArrayOverride, set } from '../../utils';
 
 import { createContext } from 'radix-vue';
 import { useForm } from 'vee-validate';
 import { getDefaultsForSchema } from 'zod-defaults';
+import { FormApi } from '../../../hooks/form/src/form-api';
 
-type ExtendFormProps = FormProps & { formApi: ExtendedFormApi };
+type ExtendFormProps = FormProps & { formApi: FormApi };
 
 export const [injectFormProps, provideFormProps] =
   createContext<[ComputedRef<ExtendFormProps> | ExtendFormProps, FormActions]>(

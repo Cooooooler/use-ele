@@ -3,22 +3,10 @@
 </template>
 
 <script setup lang="ts">
-import { initComponentAdapter, initSetupForm, useEleForm } from './adapter';
-import { onMounted, ref } from 'vue';
+import { useEleForm } from './adapter';
+import { onMounted } from 'vue';
 
-const emit = defineEmits<{
-  (e: 'click', event: MouseEvent): void;
-}>();
-
-function handleClick(e: MouseEvent) {
-  emit('click', e);
-}
-const ifShow = ref(false);
-onMounted(async () => {
-  await initSetupForm();
-  await initComponentAdapter();
-  ifShow.value = true;
-});
+onMounted(async () => {});
 
 const [Form, formApi] = useEleForm({
   commonConfig: {

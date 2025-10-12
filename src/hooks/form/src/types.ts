@@ -1,12 +1,9 @@
 import type { FieldOptions, FormContext, GenericObject } from 'vee-validate';
 import type { ZodTypeAny } from 'zod';
 
-import type { Component, HtmlHTMLAttributes, Ref } from 'vue';
+import type { Component, HtmlHTMLAttributes } from 'vue';
 
 import type { ClassType, MaybeComputedRef } from '../../typings';
-
-import { NoInfer } from '@tanstack/vue-store';
-import type { FormApi } from './form-api';
 
 export type FormLayout = 'horizontal' | 'inline' | 'vertical';
 
@@ -418,12 +415,6 @@ export interface FormProps<
    */
   submitOnEnter?: boolean;
 }
-
-export type ExtendedFormApi = FormApi & {
-  useStore: <T = NoInfer<FormProps>>(
-    selector?: (state: NoInfer<FormProps>) => T,
-  ) => Readonly<Ref<T>>;
-};
 
 export interface FormAdapterOptions<
   T extends BaseFormComponentType = BaseFormComponentType,

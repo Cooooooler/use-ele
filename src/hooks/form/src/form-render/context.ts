@@ -8,7 +8,6 @@ export const [injectRenderFormProps, provideFormRenderProps] =
 
 export const useFormContext = () => {
   const formRenderProps = injectRenderFormProps();
-  console.log('🚀 ~ useFormContext ~ formRenderProps: ', formRenderProps);
 
   const isVertical = computed(() => formRenderProps.layout === 'vertical');
 

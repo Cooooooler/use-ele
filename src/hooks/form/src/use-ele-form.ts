@@ -1,12 +1,6 @@
-import type {
-  BaseFormComponentType,
-  ExtendedFormApi,
-  FormProps,
-} from './types';
+import type { BaseFormComponentType, FormProps } from './types';
 
 import { defineComponent, h, isReactive, onBeforeUnmount, watch } from 'vue';
-
-import { useStore } from '@tanstack/vue-store';
 
 import { FormApi } from './form-api';
 import UseEleFormCom from './use-ele-form-com.vue';
@@ -16,10 +10,7 @@ export function useForm<
 >(options: FormProps<T>) {
   const IS_REACTIVE = isReactive(options);
   const api = new FormApi(options);
-  const extendedApi: ExtendedFormApi = api as never;
-  extendedApi.useStore = (selector) => {
-    return useStore(api.store, selector);
-  };
+  const extendedApi = api;
 
   const Form = defineComponent(
     (props: FormProps, { attrs, slots }) => {

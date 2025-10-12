@@ -30,6 +30,14 @@ async function initSetupForm() {
 
 const useEleForm = useForm<ComponentType>;
 
+/**
+ * 特别注意⚠️
+ * 这两行代码请写入到项目的main.js/ts中
+ * 初始化适配器
+ */
+await initComponentAdapter();
+await initSetupForm();
+
 export { initComponentAdapter, initSetupForm, useEleForm };
 
 export type EleFormSchema = FormSchema<ComponentType>;

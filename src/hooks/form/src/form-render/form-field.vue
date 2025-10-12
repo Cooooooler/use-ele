@@ -62,8 +62,6 @@ const compact = computed(() => formRenderProps.compact);
 const isInValid = computed(() => errors.value?.length > 0);
 
 const FieldComponent = computed(() => {
-  console.log('🚀 ~  ~ component: ', component);
-  console.log('🚀 ~  ~ componentMap.value: ', componentMap.value);
   const finalComponent = isString(component)
     ? componentMap.value[component]
     : component;
