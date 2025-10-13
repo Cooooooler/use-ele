@@ -1,11 +1,13 @@
 import type { BaseFormComponentType, FormProps } from './types';
 
+import type { MaybeRef } from '@vueuse/core';
 import {
   defineComponent,
   h,
   isReactive,
+  isRef,
   onBeforeUnmount,
-  Ref,
+  unref,
   watch,
 } from 'vue';
 
@@ -14,9 +16,10 @@ import UseEleFormCom from './use-ele-form-com.vue';
 
 export function useForm<
   T extends BaseFormComponentType = BaseFormComponentType,
->(options: FormProps<T> | Ref<FormProps<T>>['value']) {
-  const IS_REACTIVE = isReactive(options);
-  const api = new FormApi(options);
+>(options: MaybeRef<FormProps<T>>) {
+  const opts = unref(options);
+  const IS_REACTIVE = isReactive(opts);
+  const api = new FormApi<T>(opts);
   const extendedApi = api;
 
   const Form = defineComponent(
@@ -34,11 +37,11 @@ export function useForm<
     },
   );
   // Add reactivity support
-  if (IS_REACTIVE) {
+  if (isRef(options) || IS_REACTIVE) {
     watch(
-      () => options.schema,
+      () => unref(options).schema,
       () => {
-        api.setState({ schema: options.schema });
+        api.setState({ schema: unref(options).schema });
       },
       { immediate: true },
     );

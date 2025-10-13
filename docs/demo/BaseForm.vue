@@ -10,11 +10,6 @@ import type { ComponentType } from './adapter/component';
 import { FormProps } from 'use-ele';
 
 const formSchema = ref<FormProps<ComponentType>>({
-  commonConfig: {
-    componentProps: {
-      class: 'w-full',
-    },
-  },
   layout: 'horizontal',
   wrapperClass: 'grid grid-cols-1 w-[600px]',
   handleSubmit: (values: Record<string, any>) => {

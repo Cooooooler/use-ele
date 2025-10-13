@@ -10,7 +10,12 @@ import { isRef, toRaw } from 'vue';
 
 import type { Recordable } from '../../utils/types';
 
-import type { FormActions, FormProps, FormSchema } from './types';
+import type {
+  BaseFormComponentType,
+  FormActions,
+  FormProps,
+  FormSchema,
+} from './types';
 
 import { NoInfer, Store, useStore } from '@tanstack/vue-store';
 import {
@@ -48,15 +53,15 @@ function getDefaultState(): FormProps {
   };
 }
 
-export class FormApi {
+export class FormApi<T extends BaseFormComponentType = BaseFormComponentType> {
   // private api: Pick<FormProps, 'handleReset' | 'handleSubmit'>;
   public form = {} as FormActions;
   isMounted = false;
 
-  public state: null | FormProps = null;
+  public state: null | FormProps<T> = null;
   stateHandler: StateHandler;
 
-  public store: Store<FormProps>;
+  public store: Store<FormProps<T>>;
 
   /**
    * 组件实例映射
@@ -66,14 +71,14 @@ export class FormApi {
   // 最后一次点击提交时的表单值
   private latestSubmissionValues: null | Recordable<any> = null;
 
-  private prevState: null | FormProps = null;
+  private prevState: null | FormProps<T> = null;
 
-  constructor(options: FormProps = {}) {
+  constructor(options: FormProps<T> = {}) {
     const { ...storeState } = options;
 
     const defaultState = getDefaultState();
 
-    this.store = new Store<FormProps>(
+    this.store = new Store<FormProps<T>>(
       {
         ...defaultState,
         ...storeState,
@@ -299,7 +304,9 @@ export class FormApi {
   }
 
   setState(
-    stateOrFn: ((prev: FormProps) => Partial<FormProps>) | Partial<FormProps>,
+    stateOrFn:
+      | ((prev: FormProps<T>) => Partial<FormProps<T>>)
+      | Partial<FormProps<T>>,
   ) {
     if (isFunction(stateOrFn)) {
       this.store.setState((prev) => {
