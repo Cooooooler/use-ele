@@ -7,11 +7,14 @@ import { useEleForm } from './adapter';
 import { h, ref } from 'vue';
 import { ElCheckbox, ElMessage } from 'element-plus';
 import type { ComponentType } from './adapter/component';
-import { FormProps } from 'use-ele';
+import type { FormProps } from 'use-ele';
 
 const formSchema = ref<FormProps<ComponentType>>({
   layout: 'horizontal',
   wrapperClass: 'grid grid-cols-1 w-[600px]',
+  commonConfig: {
+    emptyStateValue: null,
+  },
   handleSubmit: (values: Record<string, any>) => {
     console.log('🚀 ~ handleSubmit ~ values: ', values);
     ElMessage.success(`表单数据：${JSON.stringify(values)}`);
@@ -110,7 +113,7 @@ const formSchema = ref<FormProps<ComponentType>>({
     },
   ],
 });
-const [MyForm, formApi] = useEleForm(formSchema.value);
+const [MyForm, formApi] = useEleForm(formSchema);
 
 function setFormValues() {
   formApi.setValues({

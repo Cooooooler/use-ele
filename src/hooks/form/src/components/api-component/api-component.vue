@@ -76,7 +76,7 @@ interface Props {
 
 defineOptions({ name: 'ApiComponent', inheritAttrs: false });
 
-const props = withDefaults(defineProps(), {
+const props = withDefaults(defineProps<Props>(), {
   labelField: 'label',
   valueField: 'value',
   childrenField: '',

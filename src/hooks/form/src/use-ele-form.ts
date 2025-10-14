@@ -1,6 +1,5 @@
 import type { BaseFormComponentType, FormProps } from './types';
 
-import type { MaybeRef } from '@vueuse/core';
 import {
   defineComponent,
   h,
@@ -11,12 +10,15 @@ import {
   watch,
 } from 'vue';
 
+import type { Ref } from 'vue';
 import { FormApi } from './form-api';
 import UseEleFormCom from './use-ele-form-com.vue';
 
+type MaybeRefLike<T> = T | Ref;
+
 export function useForm<
   T extends BaseFormComponentType = BaseFormComponentType,
->(options: MaybeRef<FormProps<T>>) {
+>(options: MaybeRefLike<FormProps<T>>) {
   const opts = unref(options);
   const IS_REACTIVE = isReactive(opts);
   const api = new FormApi<T>(opts);
