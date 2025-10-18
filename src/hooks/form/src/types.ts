@@ -304,7 +304,7 @@ export interface FormRenderProps<
   /**
    * 表单实例
    */
-  form?: FormContext<GenericObject>;
+  form?: FormContext;
   /**
    * 表单项布局
    */

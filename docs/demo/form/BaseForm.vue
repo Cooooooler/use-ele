@@ -1,20 +1,13 @@
 <template>
-  <MyForm />
+  <Form />
 </template>
 
 <script setup lang="ts">
-import { useEleForm } from './adapter';
-import { h, ref } from 'vue';
+import { useEleForm } from '../adapter';
+import { h } from 'vue';
 import { ElCheckbox, ElMessage } from 'element-plus';
-import type { ComponentType } from './adapter/component';
-import type { FormProps } from 'use-ele';
 
-const formSchema = ref<FormProps<ComponentType>>({
-  layout: 'horizontal',
-  wrapperClass: 'grid grid-cols-1 w-[600px]',
-  commonConfig: {
-    emptyStateValue: null,
-  },
+const [Form] = useEleForm({
   handleSubmit: (values: Record<string, any>) => {
     console.log('🚀 ~ handleSubmit ~ values: ', values);
     ElMessage.success(`表单数据：${JSON.stringify(values)}`);
@@ -25,6 +18,9 @@ const formSchema = ref<FormProps<ComponentType>>({
       fieldName: 'string',
       label: '输入框',
       rules: 'required',
+      componentProps: {
+        placeholder: '请输入内容',
+      },
     },
     {
       component: 'InputNumber',
@@ -113,29 +109,4 @@ const formSchema = ref<FormProps<ComponentType>>({
     },
   ],
 });
-const [MyForm, formApi] = useEleForm(formSchema);
-
-function setFormValues() {
-  formApi.setValues({
-    string: 'string',
-    number: 123,
-    radio: 'B',
-    radioButton: 'C',
-    checkbox: ['A', 'C'],
-    checkButton: ['B', 'C'],
-    checkbox1: ['A', 'B'],
-    date: new Date(),
-    select: 'B',
-  });
-}
-
-setFormValues();
-formSchema.value.schema.push({
-  component: 'Input',
-  fieldName: 'string1',
-  label: '输入框1',
-  rules: 'required',
-});
 </script>
-
-<style lang="less" scoped></style>

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ZodType } from 'zod';
+import { RxExclamationTriangle } from 'vue-icons-plus/rx';
 
 import type { FormSchema, MaybeComponentProps } from '../types';
 
@@ -362,15 +363,7 @@ onUnmounted(() => {
               >
                 <template #trigger>
                   <slot name="trigger">
-                    <!--                    TODO:圆警报icon-->
-                    <!--                    <CircleAlert-->
-                    <!--                      :class="-->
-                    <!--                        cn(-->
-                    <!--                          'text-foreground/80 hover:text-foreground inline-flex size-5 cursor-pointer',-->
-                    <!--                        )-->
-                    <!--                      "-->
-                    <!--                    />-->
-                    <span>圆警报</span>
+                    <RxExclamationTriangle />
                   </slot>
                 </template>
                 <FormMessage />
