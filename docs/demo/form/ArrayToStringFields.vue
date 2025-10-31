@@ -12,7 +12,6 @@ const [Form] = useEleForm({
     [['string'], ';'],
   ],
   handleSubmit: (values: Record<string, any>) => {
-    console.log('🚀 ~ handleSubmit ~ values: ', values);
     ElMessage.success(`表单数据：${JSON.stringify(values)}`);
   },
   schema: [

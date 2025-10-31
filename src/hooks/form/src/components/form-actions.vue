@@ -176,7 +176,7 @@ defineExpose({
       v-if="rootProps.showCollapseButton"
       v-model:model-value="collapsed"
     >
-      <span>{{ collapsed ? '展开' : '收起' }}</span>
+      <span class="text-xs">{{ collapsed ? '展开' : '收起' }}</span>
     </ExpandableArrow>
 
     <!-- 展开按钮后 -->

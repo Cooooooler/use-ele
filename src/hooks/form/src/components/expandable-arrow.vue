@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import { AiOutlineDown } from 'vue-icons-plus/ai';
 import { cn } from '../../../utils';
 
 const props = defineProps<{
@@ -11,21 +12,18 @@ const collapsed = defineModel({ default: false });
 
 <template>
   <div
-    :class="cn('vben-link inline-flex items-center', props.class)"
+    :class="cn('use-link inline-flex items-center', props.class)"
     @click="collapsed = !collapsed"
   >
     <slot :is-expanded="collapsed">
       {{ collapsed }}
-      <!-- <span>{{ isExpanded ? '收起' : '展开' }}</span> -->
     </slot>
     <div
       :class="{ 'rotate-180': !collapsed }"
       class="transition-transform duration-300"
     >
       <slot name="icon">
-        <!--        TODO: 箭头icon-->
-        <!--        <ChevronDown class="size-4" />-->
-        <span>箭头</span>
+        <AiOutlineDown class="mx-2 text-xs w-4 h-4" />
       </slot>
     </div>
   </div>

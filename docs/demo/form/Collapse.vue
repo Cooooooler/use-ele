@@ -11,6 +11,8 @@ const [Form] = useEleForm({
   handleSubmit: (values: Record<string, any>) => {
     ElMessage.success(`表单数据：${JSON.stringify(values)}`);
   },
+  collapsed: true,
+  showCollapseButton: true,
   schema: [
     {
       component: 'Input',

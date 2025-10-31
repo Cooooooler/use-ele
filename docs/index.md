@@ -1,20 +1,20 @@
 ---
 hero:
-  title: library
-  description: A vue library developed with dumi
+  title: use-ele
+  description: 一个Vue 3.x 的声明式表单，表格，弹框组件
   actions:
-    - text: Hello
+    - text: 快速开始
       link: /
-    - text: Vue
+    - text: Github
       link: /
 features:
-  - title: Hello
+  - title: useForm
     emoji: 💎
-    description: Put hello description here
-  - title: Vue
+    description: 像写一个 input 一样写表单
+  - title: useTable
     emoji: 🌈
-    description: Put world description here
-  - title: '!'
+    description: 协议生成 & 高度灵活的搜索列表
+  - title: useModal
     emoji: 🚀
-    description: Put ! description here
+    description: 便捷使用的Api弹框组件
 ---

@@ -27,7 +27,32 @@
   }
 }
 
+@layer utilities {
+  .text-primary {
+    color: hsl(212deg 100% 45%);
+  }
+
+  .text-primary-hover {
+    color: hsl(212deg 100% 55%);
+  }
+
+  .text-primary-active {
+    color: hsl(212deg 100% 40%);
+  }
+}
+
 @theme inline {
+  --color-primary: hsl(212deg 100% 45%);
+  --color-primary-hover: hsl(212deg 100% 55%);
+  --color-primary-active: hsl(212deg 100% 40%);
   --animate-fade-in-down: fade-in-down 300ms ease-out;
   --animate-fade-out-up: fade-out-up 300ms ease-in;
+}
+
+.use-link {
+  @apply text-primary hover:text-primary-hover active:text-primary-active cursor-pointer;
+}
+
+.el-button + .el-button {
+  margin: 0;
 }
