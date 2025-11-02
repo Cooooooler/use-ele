@@ -324,7 +324,9 @@ onUnmounted(() => {
         </template>
       </FormLabel>
       <div class="flex-auto overflow-hidden p-[1px]">
-        <div :class="cn('relative flex w-full items-center', wrapperClass)">
+        <div
+          :class="cn('relative flex w-full items-center gap-2', wrapperClass)"
+        >
           <FormControl :class="cn(controlClass)">
             <slot
               v-bind="{
@@ -363,7 +365,7 @@ onUnmounted(() => {
               >
                 <template #trigger>
                   <slot name="trigger">
-                    <RxExclamationTriangle />
+                    <RxExclamationTriangle class="w-4 text-red-600 shrink-0" />
                   </slot>
                 </template>
                 <FormMessage />
@@ -383,7 +385,7 @@ onUnmounted(() => {
           enter-active-class="animate-fade-in-down"
           leave-active-class="animate-fade-out-up"
         >
-          <FormMessage class="absolute" />
+          <FormMessage class="absolute" v-if="!compact" />
         </Transition>
       </div>
     </FormItem>

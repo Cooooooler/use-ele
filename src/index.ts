@@ -1,2 +1,2 @@
-import './style/tailwind.css';
+import './style/index';
 export * from './hooks';

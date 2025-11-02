@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import type { TooltipContentEmits, TooltipContentProps } from 'radix-vue';
+import { TooltipContent, TooltipPortal, useForwardPropsEmits } from 'radix-vue';
 
 import { computed } from 'vue';
 
 import { cn } from '../../../utils';
-
-import { TooltipContent, TooltipPortal, useForwardPropsEmits } from 'radix-vue';
 
 defineOptions({
   inheritAttrs: false,
