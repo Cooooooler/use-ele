@@ -2,8 +2,6 @@ import type { FieldOptions, FormContext, GenericObject } from 'vee-validate';
 import type { ZodTypeAny } from 'zod';
 
 import type { Component, HtmlHTMLAttributes } from 'vue';
-
-import { AsTag } from 'radix-vue';
 import type { ClassType, MaybeComputedRef } from '../../typings';
 
 export type FormLayout = 'horizontal' | 'inline' | 'vertical';
@@ -329,36 +327,9 @@ export interface FormRenderProps<
   wrapperClass?: WrapperClassType;
 }
 
-export type ButtonVariantSize =
-  | 'default'
-  | 'icon'
-  | 'lg'
-  | 'sm'
-  | 'xs'
-  | null
-  | undefined;
-
-export type ButtonVariants =
-  | 'default'
-  | 'destructive'
-  | 'ghost'
-  | 'heavy'
-  | 'icon'
-  | 'link'
-  | 'outline'
-  | 'secondary'
-  | null
-  | undefined;
-
 export interface ActionButtonOptions {
   [key: string]: any;
-  as?: AsTag | Component;
-  asChild?: boolean;
   class?: any;
-  disabled?: boolean;
-  loading?: boolean;
-  size?: ButtonVariantSize;
-  variant?: ButtonVariants;
   content?: MaybeComputedRef<string>;
   show?: boolean;
 }
